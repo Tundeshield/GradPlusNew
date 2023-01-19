@@ -1,0 +1,32 @@
+﻿@model IEnumerable<GradPlus.Data.Models.Domain.JobCategory>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+
+<div>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container" style="padding-top:3rem">
+            <h1 class="display-4 mt-2" style="text-align:center; margin-top:4rem">Graduate jobs made easy!</h1>
+            <p class="lead mb-4" style="text-align:center">Register today and start applying in record time.</p>
+
+            @using (Html.BeginForm("ShowSearchResults", "Job", FormMethod.Post))
+            {
+
+
+                <div class="form-group row" style="text-align:center; margin-top:4rem" >
+                    <div class="input-group mb-3" style="display:flex;justify-content:center">
+                        <input type="text" class="form-control" placeholder="E.g React Js, Cloud computing" aria-label="Search For Jobs" aria-describedby="button-addon2" name="SearchString">
+                        <button class="btn btn-primary" type="submit" id="button-addon2">Search For Jobs</button>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+    </div>
+</div>
+
+@Html.Partial("~/Views/JobCategory/GetJobCategories.cshtml", Model)

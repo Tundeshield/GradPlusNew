@@ -1,0 +1,42 @@
+﻿@model GradPlus.Data.Models.Domain.JobApplication
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>JobApplication</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.JobID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobSeekerID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobSeekerID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JobAppliedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JobAppliedDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

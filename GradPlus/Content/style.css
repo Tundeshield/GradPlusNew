@@ -1,0 +1,47 @@
+﻿.symbol.symbol-circle, .symbol.symbol-circle > img, .symbol.symbol-circle .symbol-label {
+    border-radius: 50%;
+}
+
+.symbol {
+    display: inline-block;
+    flex-shrink: 0;
+    position: relative;
+    border-radius: 0.475rem;
+}
+    .symbol.symbol-65px .symbol-label {
+        width: 65px;
+        height: 65px;
+    }
+
+    .symbol.symbol-circle, .symbol.symbol-circle > img, .symbol.symbol-circle .symbol-label {
+        border-radius: 50%;
+    }
+
+    .symbol .symbol-label {
+        width: 50px;
+        height: 50px;
+    }
+
+    .symbol .symbol-label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 500;
+        color: #50cd89;
+        background-color: #e8fff3;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        border-radius: 0.475rem;
+    }
+
+.text-success {
+    color: #50cd89 !important;
+}
+
+.bg-light-success {
+    background-color: #e8fff3 !important;
+}
+.ps-10 {
+    padding-left: 2.5rem !important;
+}

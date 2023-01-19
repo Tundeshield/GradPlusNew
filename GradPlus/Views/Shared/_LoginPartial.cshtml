@@ -1,0 +1,31 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+<ul class="nav navbar-nav navbar-right">
+    @if (Context.User.IsInRole("Employer"))
+    {
+    @Html.ActionLink("Post A Job", "CreateJob", "Job", routeValues: null, htmlAttributes: new { id = "jobLink", @class = "btn btn-dark me-5", @type = "button", @style = "margin-right:1rem;" })
+
+    }
+    <li class="me-3 mt-2">
+        @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+    </li>
+    <li><a class="btn btn-danger" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+</ul>
+    }
+}
+else
+{
+
+<ul class="navbar-nav navbar-right">
+
+    @Html.ActionLink("Sign Up", "SignUp", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "btn btn-outline-primary", @type = "button", @style = "margin-right:1rem;" })
+
+    @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "btn btn-outline-primary", @type = "button" })
+
+</ul>
+}

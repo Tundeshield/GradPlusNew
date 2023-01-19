@@ -1,0 +1,26 @@
+﻿@model GradPlus.Data.Models.Domain.CompanyCategory
+
+@{
+    ViewBag.Title = "GetCompanyCategory";
+}
+
+<h2>GetCompanyCategory</h2>
+
+<div>
+    <h4>CompanyCategory</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditCompanyCategory", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "GetCompanyCategories")
+</p>

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<GradPlus.Data.Models.Domain.JobCategory>
+
+@{
+    ViewBag.Title = "GetJobCategories";
+}
+
+<h3 style="margin-top:4rem;margin-bottom:2rem; text-align:center">Job Categories</h3>
+
+<div class="row">
+    @foreach (var item in Model.Take(3))
+    {
+
+        <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="card rounded-lg border border-gray-300">
+                <div class="justify-between items-center p-4 w-full h-full bg-white ">
+                    <h6 class="font-semibold text-center text-gray-900">
+                        @Html.ActionLink(item.Name, "GetCategoryJobs", "JobCategory", new { id = item.ID }, null)
+                    </h6>
+                    @{
+                        int count = item.JobsCount;
+
+                        string word = count > 1 ? "Jobs" : "Job";
+                    }
+                    <p class="text-center"> @Html.DisplayFor(modelItem => count) @word</p>
+                    <span class="fw-bold"> @Html.DisplayFor(modelItem => item.Description)</span>
+                </div>
+
+            </div>
+        </div>
+
+
+    }
+</div>
+<div class="text-center">
+    @Html.ActionLink("Explore all jobs", "GetJobs", "Job", routeValues: null, htmlAttributes: new { @class = "btn btn-dark mt-4" })
+</div>
+

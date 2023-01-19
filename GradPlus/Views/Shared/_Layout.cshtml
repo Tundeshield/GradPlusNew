@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/style.css" rel="stylesheet" />
+    
+
+</head>
+<body style="padding-top:unset; padding-bottom:unset">
+   
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">@Html.ActionLink("GradPlus", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarColor03">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+
+                            <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })
+                    </li>
+
+                    @if (Request.IsAuthenticated)
+                    {
+                        if (Context.User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                @Html.ActionLink("Employers", "GetAllEmployers", "Employer", null, new { @class = "nav-link" })
+                            </li>
+                            <li class="nav-item">
+                                @Html.ActionLink("Add Job Categories", "CreateJobCategory", "JobCategory", null, new { @class = "nav-link" })
+                            </li>
+                        }
+                        if (Context.User.IsInRole("Job Seeker"))
+                        {
+                            
+                            <li class="nav-item">
+                                @Html.ActionLink("Saved Jobs", "SavedJobs", "Job", null, new { @class = "nav-link" })
+                            </li>
+                        }
+                    }
+                    <li class="nav-item">
+                        @Html.ActionLink("Jobs", "GetJobs", "Job", null, new { @class = "nav-link" })
+                    </li>
+
+                </ul>
+               
+                    
+                        @Html.Partial("_LoginPartial", new { @class = "nav-link" })
+                   
+               
+                
+    </div>
+            </div>
+    </nav>
+
+
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Gradplus</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+

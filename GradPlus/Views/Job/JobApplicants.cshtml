@@ -1,0 +1,47 @@
+﻿@model GradPlus.Services.Models.JobSeekerDTOS.JobApplicantsDto
+
+@{
+    ViewBag.Title = "GetJobs";
+}
+
+
+<h2>Jobs</h2>
+
+<div>
+    @Html.DisplayFor(modelItem => modelItem.Job.JobTitle) <br />
+</div>
+
+@if (Model.JobApplicants.Any())
+{
+<div class="row">
+
+    @foreach (var item in Model.JobApplicants)
+    {
+        <div class="col-lg-12">
+            <div class="card rounded-lg border border-gray-300">
+                <div class="d-flex flex-stack">
+                    <div class="d-flex align-items-center flex-row-fluid flex-wrap mt-5">
+                        <!--begin:Author-->
+                        <div class="flex-grow-1 ms-4" style="margin-top: -37px;">
+                            
+                            <span class="text-muted fw-semibold d-block fs-7 mb-4">
+                                <img src="@Url.Content($"~/{item.Picture}")"/>
+                                @Html.DisplayFor(modelItem => item.FirstName)   @Html.DisplayFor(modelItem => item.LastName) <br />
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </span>
+                        </div>
+                        <!--end:Author-->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
+</div>
+
+}
+else
+{
+    <div>No Applicants for this job</div>
+}
+                   

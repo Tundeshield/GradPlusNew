@@ -1,0 +1,67 @@
+﻿@model IEnumerable<GradPlus.Data.Models.Domain.Job>
+
+@{
+    ViewBag.Title = "SavedJobs";
+}
+
+
+<h2>My Saved Jobs</h2>
+
+@if (Model.Any()) {
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-12 mb-4">
+            <div class="card rounded-lg border border-gray-300">
+                <div class="d-flex flex-stack">
+                    <!--begin::Symbol-->
+                    <div class="symbol symbol-65px symbol-circle mb-5 mt-2 ms-3">
+                        @{
+                            string companyInitial = item.CompanyName.ToString().Substring(0, 1);
+                        }
+                        <span class="symbol-label fs-2x fw-semibold text-success bg-light-success"> @Html.DisplayFor(modelItem => companyInitial)</span>
+                    </div>
+                    <!--end::Symbol-->
+                    <!--begin::Section-->
+                    <div class="d-flex align-items-center flex-row-fluid flex-wrap mt-5">
+                        <!--begin:Author-->
+                        <div class="flex-grow-1 ms-4" style="margin-top: -37px;">
+                            <a class="text-gray-800 text-hover-primary fs-6 fw-bold"> @Html.ActionLink(item.CompanyName, "GetJob", new { id = item.ID })</a>
+                            <span class="text-muted fw-semibold d-block fs-7 mb-4">
+                                @Html.DisplayFor(modelItem => item.JobTitle) <br />
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </span>
+                            <p>
+                                <span>
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path opacity="0.3" d="M18.0624 15.3454L13.1624 20.7453C12.5624 21.4453 11.5624 21.4453 10.9624 20.7453L6.06242 15.3454C4.56242 13.6454 3.76242 11.4452 4.06242 8.94525C4.56242 5.34525 7.46242 2.44534 11.0624 2.04534C15.8624 1.54534 19.9624 5.24525 19.9624 9.94525C20.0624 12.0452 19.2624 13.9454 18.0624 15.3454ZM13.0624 10.0453C13.0624 9.44534 12.6624 9.04534 12.0624 9.04534C11.4624 9.04534 11.0624 9.44534 11.0624 10.0453V13.0453H13.0624V10.0453Z" fill="currentColor" />
+                                        <path d="M12.6624 5.54531C12.2624 5.24531 11.7624 5.24531 11.4624 5.54531L8.06241 8.04531V12.0453C8.06241 12.6453 8.46241 13.0453 9.06241 13.0453H11.0624V10.0453C11.0624 9.44531 11.4624 9.04531 12.0624 9.04531C12.6624 9.04531 13.0624 9.44531 13.0624 10.0453V13.0453H15.0624C15.6624 13.0453 16.0624 12.6453 16.0624 12.0453V8.04531L12.6624 5.54531Z" fill="currentColor" />
+                                    </svg>
+                                </span>  @Html.DisplayFor(modelItem => item.CompanyAddress)
+                            </p>
+                            @{
+                                IFormatProvider currencyFormat = new System.Globalization.CultureInfo("en-US");
+                                var amount = string.Format(currencyFormat, "{0:c}", item.Salary);
+                            }
+                            <span class="text-success fw-bold d-block fs-6 mb-2"> @Html.DisplayFor(modelItem => amount)</span> <span class="badge bg-secondary mb-3">@Html.DisplayFor(modelItem => item.ComapanyEmail)</span> <span class="badge bg-secondary mb-3"> @Html.DisplayFor(modelItem => item.Location)</span>
+                        </div>
+                        <!--end:Author-->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    }
+
+
+
+</div>
+            }
+            else {
+    <span class="text-bg-dark text-center"> No Job Available</span>
+}
+                   

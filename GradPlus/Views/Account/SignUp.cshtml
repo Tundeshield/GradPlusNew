@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "SignUp";
+}
+
+<h2 class="text-center mt-4 mb-5">Create your Account</h2>
+
+<div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-4 col-sm-12 col-md-4">
+        <div class="card border-1">
+            <div class="md:px-5 py-[50px] p-5 mb-5 w-full rounded-lg md:w-[500px] text-center">
+                <img class="mx-auto mb-4 ls-is-cached lazyloaded" src="~/Content/images/user.png" width="70" />
+                <h4 class="text-dark fw-bold">Job Seeker</h4>
+                <p class="mb-2 text-base text-gray-500">
+                    Are you looking for your dream job?<br>Create a unique career profile with GradPlus
+                </p>
+
+                @Html.ActionLink("Sign up as seeker", "RegisterJobSeeker", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "btn btn-outline-primary", @type = "button" })
+            </div>
+
+           
+        </div>
+    </div>
+    <div class="col-lg-4 col-sm-12 col-md-4">
+        <div class="card border-1">
+            <div class="md:px-5 py-[50px] p-5 mb-5 w-full rounded-lg md:w-[500px] text-center">
+                <img class="mx-auto mb-4 ls-is-cached lazyloaded" src="~/Content/images/suitcase.png" width="70" />
+                <h4 class="text-dark fw-bold">Employer</h4>
+                <p class="mb-2 text-base text-gray-500">
+                    Are you looking for quality candidates?
+                    <br> Advertise and search with GradPlus
+                </p>
+
+                @Html.ActionLink("Sign up as employer", "RegisterEmployer", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "btn btn-outline-primary mb-4", @type = "button" })
+            </div>
+
+
+        </div>
+    </div>
+    <div class="col-lg-2"></div>
+</div>
